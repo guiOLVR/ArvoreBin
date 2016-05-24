@@ -7,7 +7,7 @@ struct no{
 	No *direita;
 };
 
-//--------------------CRIA-VAZIO-------------------------------
+//--------------------VERIFICA-VAZIO-------------------------------
 int vazia(No* empty){
 	return empty==NULL;
 }
@@ -47,7 +47,7 @@ int busca(No* a, int num){
 	}
 	else{
 		if(num==a->dado){
-			printf("\n%d\n",a->dado);
+			printf("\n%d\n",&a->dado);
 			return 1;		
 		}
 		else if(busca(a->esquerda, num)){
@@ -69,10 +69,18 @@ No* liberaMemoria(No* a){
 	return NULL;
 }
 
-//--------------------------REMOVE----------------------------
+//--------------------------TAMANHO DA ARVORE----------------------------
+int max(int a, int b){
+	return (a>b) ? a : b; 
+}
 
-
-
-
+int tamanhoArvore(No* a){
+	if(vazia(a)){
+		return -1;
+	}
+	else{
+		return 1 + max(tamanhoArvore(a->esquerda), tamanhoArvore(a->direita));
+	}
+}
 
 
