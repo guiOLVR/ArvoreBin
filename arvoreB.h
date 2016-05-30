@@ -174,3 +174,15 @@ void inserirB(No **endPonteiroNo, int dado) {
 		}
 	} 
 }
+
+//-----------------------------------------------------------
+int vaziaB(No* empty){
+	return empty==NULL;
+}
+void imprimeB(No* a){
+	if (!vaziaB(a)){
+		printf("%d ", a->dado);		
+		imprimeB(a->esquerda);	
+		imprimeB(a->direita);	
+	}
+}

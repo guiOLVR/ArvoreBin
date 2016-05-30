@@ -51,7 +51,7 @@ main(){
 		No* arvore = NULL;
 		
 		while(opcao !=6){
-			puts("Escolha uma opcao: \n 1.Iserir \n 2.Buscar valor \n 3.Remover \n6.Sair \n");
+			puts("Escolha uma opcao: \n 1.Iserir \n 2.Buscar valor \n 3.Imprimi \n 4.Remover \n6.Sair \n");
 			scanf("%d", &opcao);
 			switch(opcao){
 				case 1:	system("cls");
@@ -65,9 +65,11 @@ main(){
 						buscaB(arvore, num);
 						break;
 				case 3: system("cls");
-						scanf("%d",&num);
-						//remover(&arvore, num);
-						puts("\nPutz!!\n");
+						imprimeB(arvore);
+						break;
+				case 4: system("cls");
+						scanf("%d", &num);
+						puts("\nPuutz!\n");
 						break;		
 			}
 		}

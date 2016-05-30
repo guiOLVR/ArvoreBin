@@ -43,9 +43,9 @@ int vazia(No1* empty){
 //-------------------------IMPRIME--------------------------------
 void imprime(No1* a){
 	if (!vazia(a)){
-		printf("%d ", a->dado);		//mostra raiz
-		imprime(a->esquerda);	//mostra lado esquerdo
-		imprime(a->direita);		//mostra lado direito
+		printf("%d ", a->dado);	
+		imprime(a->esquerda);	
+		imprime(a->direita);	
 	}
 }
 
