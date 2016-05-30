@@ -1,11 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <String.h>
 typedef struct no No;
 struct no{
 	int dado;
 	No *esquerda;
 	No *direita;
 };
+//--------------MENOR----------------------------
+No* Menor(No *pNo){
+	while(pNo->esquerda != NULL) {
+		pNo = pNo->esquerda;
+	}
+	return pNo;
+}
+//------------------PENULTIMO--------------------
+No* penultimoNo(No *pNo) {
+	No *pai;
+	if (pNo->direita == NULL) return pNo;
+	while(pNo->direita != NULL){
+		if (pNo->direita == NULL) break;
+		pai = pNo;
+		pNo = pNo->direita;
+	}
+	return pai;
+}
+//------------------MAIOR------------------------
+No* Maior(No *pNo) {
+	if (pNo->direita == NULL) return pNo;
+	while(pNo->direita != NULL){
+		if (pNo->direita == NULL) break;
+		pNo = pNo->direita;
+	}
+	return pNo;
+}
 
 //--------------------VERIFICA-VAZIO-------------------------------
 int vazia(No* empty){
@@ -83,4 +111,79 @@ int tamanhoArvore(No* a){
 	}
 }
 
-
+//----------------------------REMOCAO------------------------------
+void remover(No **no, int valor) {
+	No *paiDoMaior = NULL;
+	No *pai = NULL;
+	No *pNo = *no;
+	No *a =  NULL;	
+	No *b = NULL;
+;
+	if (pNo != NULL) {
+		
+		while (pNo) {
+				 if (pNo->dado==valor) break;
+				 if (valor < pNo->dado) {
+				 	
+					pai = pNo;
+					pNo = pNo->esquerda;
+				 }
+			else if (valor > pNo->dado) {
+				if (pNo->dado==valor) break;
+				pai = pNo;
+				pNo = pNo->direita;
+			}
+		}
+		printf ("Numero: %d Endereco: %d\n", pNo->dado,&pNo->dado);
+		system ("pause");
+		if (pNo->esquerda == NULL && pNo->direita == NULL) {			
+			printf("%d\n",no);
+			if (pai != NULL && pai->dado < pNo->dado) pai->direita = NULL;
+			else if  (pai != NULL) pai->esquerda = NULL;
+			pNo = NULL;
+			printf("%d\n",pNo);
+			free(pNo);
+		}
+		else if (pNo->esquerda == NULL) {
+			if (pai != NULL && pai->dado < (*no)->dado) pai->direita = pNo->direita;
+			else if  (pai != NULL) pai->direita = (*no)->esquerda;
+			pNo->direita = NULL;
+			pNo = NULL;
+			free (pNo); 
+		}
+		else if (pNo->direita == NULL) {
+			if (pai != NULL && pai->dado < pNo->dado) pai->direita = pNo->direita;
+			else if  (pai != NULL) pai->esquerda = pNo->esquerda;
+			pNo->esquerda = NULL;
+			pNo = NULL;	
+			free(pNo);
+		}
+		
+		else { 
+			printf("entrei no quarto caso\n");
+			a = Maior(pNo->esquerda); 
+	        paiDoMaior = penultimoNo(pNo->esquerda); 
+			a->esquerda = pNo->esquerda;         
+	        a->direita = pNo->direita;
+			if (paiDoMaior->direita == a) paiDoMaior->direita = NULL; 
+				else if (paiDoMaior->esquerda == a) paiDoMaior->esquerda = NULL; 
+				else if (paiDoMaior == a) printf("Maior da esquerda e seu pai sao os mesmos\n");
+				else printf("Erro na verificação do pai do maior numero\n");
+			if(pai != NULL && pai->esquerda == pNo) {
+					pai->esquerda = a;
+					}
+				else if (pai != NULL && pai->direita == pNo) {
+					pai->direita = a;
+				}
+				else if (pai == NULL){ 
+					(*no) = a; 
+					
+					printf ("No removido!\nA agora eh: %d\n",(*no)->dado);
+				}
+			pNo->esquerda = pNo->direita = NULL;
+	        free(&pNo); 
+			pNo = NULL;
+			
+		}
+	}
+}
