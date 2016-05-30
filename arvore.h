@@ -1,22 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <String.h>
-typedef struct no No;
-struct no{
+typedef struct no1 No1;
+struct no1{
 	int dado;
-	No *esquerda;
-	No *direita;
+	No1 *esquerda;
+	No1 *direita;
 };
 //--------------MENOR----------------------------
-No* Menor(No *pNo){
+No1* Menor(No1 *pNo){
 	while(pNo->esquerda != NULL) {
 		pNo = pNo->esquerda;
 	}
 	return pNo;
 }
 //------------------PENULTIMO--------------------
-No* penultimoNo(No *pNo) {
-	No *pai;
+No1* penultimoNo(No1 *pNo) {
+	No1 *pai;
 	if (pNo->direita == NULL) return pNo;
 	while(pNo->direita != NULL){
 		if (pNo->direita == NULL) break;
@@ -26,7 +26,7 @@ No* penultimoNo(No *pNo) {
 	return pai;
 }
 //------------------MAIOR------------------------
-No* Maior(No *pNo) {
+No1* Maior(No1 *pNo) {
 	if (pNo->direita == NULL) return pNo;
 	while(pNo->direita != NULL){
 		if (pNo->direita == NULL) break;
@@ -36,12 +36,12 @@ No* Maior(No *pNo) {
 }
 
 //--------------------VERIFICA-VAZIO-------------------------------
-int vazia(No* empty){
+int vazia(No1* empty){
 	return empty==NULL;
 }
 
 //-------------------------IMPRIME--------------------------------
-void imprime(No* a){
+void imprime(No1* a){
 	if (!vazia(a)){
 		printf("%d ", a->dado);		//mostra raiz
 		imprime(a->esquerda);	//mostra lado esquerdo
@@ -50,9 +50,9 @@ void imprime(No* a){
 }
 
 //-------------------------INSERE--------------------------------
-void inserir(No** endPonteiroNo, int x){
+void inserir(No1** endPonteiroNo, int x){
 	if (*endPonteiroNo == NULL){
-		*endPonteiroNo = (No*)malloc(sizeof(No));
+		*endPonteiroNo = (No1*)malloc(sizeof(No1));
 		(*endPonteiroNo)->dado = x;
 		(*endPonteiroNo)->esquerda = NULL;
 		(*endPonteiroNo)->direita = NULL;
@@ -68,7 +68,7 @@ void inserir(No** endPonteiroNo, int x){
 }
 
 //-------------------BUSCA-------------------------------------
-int busca(No* a, int num){
+int busca(No1* a, int num){
 	if(a==NULL){
 		//puts("valor nao existe \n");
 		return 0;
@@ -88,7 +88,7 @@ int busca(No* a, int num){
 }
 
 //-------------------------LIBERA MEMÓRIA----------------------
-No* liberaMemoria(No* a){
+No1* liberaMemoria(No1* a){
 	if (!vazia(a)){
 		liberaMemoria(a->esquerda);	
 		liberaMemoria(a->direita);
@@ -102,7 +102,7 @@ int max(int a, int b){
 	return (a>b) ? a : b; 
 }
 
-int tamanhoArvore(No* a){
+int tamanhoArvore(No1* a){
 	if(vazia(a)){
 		return -1;
 	}
@@ -112,12 +112,12 @@ int tamanhoArvore(No* a){
 }
 
 //----------------------------REMOCAO------------------------------
-void remover(No **no, int valor) {
-	No *paiDoMaior = NULL;
-	No *pai = NULL;
-	No *pNo = *no;
-	No *a =  NULL;	
-	No *b = NULL;
+void remover(No1 **no, int valor) {
+	No1 *paiDoMaior = NULL;
+	No1 *pai = NULL;
+	No1 *pNo = *no;
+	No1 *a =  NULL;	
+	No1 *b = NULL;
 ;
 	if (pNo != NULL) {
 		

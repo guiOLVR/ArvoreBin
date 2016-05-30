@@ -12,7 +12,7 @@ main(){
 	if(tipo == 1){
 		int num,b;
 		int opcao = 0;
-		No* arvore = NULL;
+		No1* arvore = NULL;
 		
 		while(opcao !=6){
 			puts("Escolha uma opcao: \n 1.Iserir \n 2.Imprimir arvore \n 3.Tamanho arvore \n 4.Buscar valor \n 5.Remover \n6.Sair \n");
@@ -66,7 +66,8 @@ main(){
 						break;
 				case 3: system("cls");
 						scanf("%d",&num);
-						remover(&arvore, num);
+						//remover(&arvore, num);
+						puts("\nPutz!!\n");
 						break;		
 			}
 		}
