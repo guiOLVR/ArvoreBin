@@ -10,8 +10,9 @@
 
 main(){
 	
-	puts("codigo feito pelo wesley logo abaixo");
-	puts("Sqn cara foi eu que fiz");
+	puts("codigo feito pelo wesley logo abaixo huehuehue br");
+	
+	
 	
 	int tipo=0;
 	puts("1.Arvore Binaria\n2.Arvore Balanceada");
