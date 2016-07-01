@@ -4,7 +4,15 @@
 #include "arvore.h"
 #include <string.h>
 
+
+
+
+
 main(){
+	
+	puts("codigo feito pelo wesley logo abaixo");
+	
+	
 	int tipo=0;
 	puts("1.Arvore Binaria\n2.Arvore Balanceada");
 	scanf("%d",&tipo);
